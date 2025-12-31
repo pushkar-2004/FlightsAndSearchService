@@ -6,6 +6,7 @@ class CityRepository {
             const city = await City.create({name});
             return city;
         }catch(error){
+            console.log("Someting went wrong inside the createCity function inside city-repository");
             throw {error};
         }
     }
@@ -18,9 +19,37 @@ class CityRepository {
                 }
             });
         }catch(err){
-
+            console.log("Something went wrong inside the deleteCity in city-repository")
+            throw(err);
         }
     }
+
+    async updateCity(){
+        try{
+            const city = await City.update(data,{
+                where:{
+                    id:cityId
+                }
+            });
+            return city;
+        }
+        catch(err){
+            console.log("Something went wrong inside the update City funcion inside city repo");
+            throw(err);
+        }
+    };
+
+    async getCity(cityId){
+        try{
+            const city = await City.findByPk(cityId);
+            return city;
+        }
+        catch(err){
+            console.log("Something went wrong inside the getCity fun in city-repo")
+            throw(err);
+        }
+    }
+
 }
 
 module.exports = CityRepository;
