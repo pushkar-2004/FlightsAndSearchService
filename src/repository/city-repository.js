@@ -24,7 +24,7 @@ class CityRepository {
         }
     }
 
-    async updateCity(cityId){
+    async updateCity(cityId,data){
         try{
             const city = await City.update(data,{
                 where:{
@@ -35,6 +35,7 @@ class CityRepository {
         }
         catch(err){
             console.log("Something went wrong inside the update City funcion inside city repo");
+
             throw(err);
         }
     };

@@ -1,6 +1,6 @@
 const {CityRepository} = require('../repository/index'); 
 
-class CityRepository{
+class CityRepositori{
     constructor(){
         this.cityRepository = new CityRepository();
     }
@@ -8,10 +8,11 @@ class CityRepository{
     async createCity(data){
 
         try{
-            const city = new this.cityRepository.createCity(data);
+            const city = this.cityRepository.createCity(data);
             return city;
         }catch(err){
             console.log("Something went wrong inside the city serivce create city");
+            console.log(data);
             throw {err};
         }
 
@@ -20,7 +21,7 @@ class CityRepository{
     async deleteCity(cityId) {
 
         try{
-            const city = new this.cityRepository.deleteCity(cityId);
+            const city = this.cityRepository.deleteCity(cityId);
             return city;
         }catch(err){
             console.log("Something went wrong inside the city serivce create city");
@@ -32,7 +33,7 @@ class CityRepository{
     async updateCity(cityId,data) {
 
         try{
-            const city = new this.cityRepository.updateCity(cityId,data);
+            const city = this.cityRepository.updateCity(cityId,data);
             return city;
         }catch(err){
             console.log("Something went wrong inside the city serivce create city");
@@ -44,7 +45,7 @@ class CityRepository{
     async getCity(cityId) {
 
         try{
-            const city = new this.cityRepository.getCity(cityId);
+            const city = this.cityRepository.getCity(cityId);
             return city;
         }catch(err){
             console.log("Something went wrong inside the city serivce create city");
@@ -54,3 +55,5 @@ class CityRepository{
     };
 
 }
+
+module.exports = CityRepositori;

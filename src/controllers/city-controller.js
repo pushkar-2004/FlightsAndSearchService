@@ -1,6 +1,6 @@
-const {CityService} = require('../services/index');
+const {CityRepository} = require('../services/index');
 
-const cityService = new CityService();
+const cityService = new CityRepository();
 
 const create = async (req , res) => {
     try{
@@ -26,10 +26,10 @@ const destroy = async (req,res) => {
         return res.status(200).json({
             data:city,
             success:true,
-            message:"successfully created city",
+            message:"successfully deleted city",
             err:{}
         });
-    } catch (error) {
+    } catch (err) {
         return res.status(500).json({
             data:{},
             success:false,
@@ -47,14 +47,14 @@ const get = async (req,res) => {
         return res.status(201).json({
             data:city,
             success:true,
-            message:"successfully created city",
+            message:"successfully get city",
             err:{}
         });
     } catch (error) {
         return res.status(500).json({
             data:{},
             success:false,
-            message:"not able to delete a city",
+            message:"not able to get a city",
             err:err,
         });
     }
@@ -68,15 +68,22 @@ const update = async (req,res) => {
         return res.status(201).json({
             data:city,
             success:true,
-            message:"successfully created city",
+            message:"successfully updated city",
             err:{}
         });
-    } catch (error) {
+    } catch (err) {
         return res.status(500).json({
             data:{},
             success:false,
-            message:"not able to delete a city",
+            message:"not able to update a city",
             err:err,
         });
     }
 }
+
+module.exports = {
+    create,
+    destroy,
+    get,
+    update,
+};
