@@ -54,6 +54,17 @@ class CityRepositori{
 
     };
 
+    async getAllCities(filter){
+        try{
+            const city = this.cityRepository.getAllCity({name:filter.name});
+            console.log(city);
+            return city;
+        }catch(err){
+            console.log("Something went wrong inside the city serivce getAll city");
+            throw {err};
+        }
+    }
+
 }
 
 module.exports = CityRepositori;
