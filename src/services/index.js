@@ -1,3 +1,4 @@
 module.exports = {
-    CityRepository : require('./city-service')
+    CityService : require('./city-service'),
+    FlightService: require('./flight-service')
 }

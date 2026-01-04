@@ -27,13 +27,13 @@ const setupAndStartServer = async () => {
         // const result = airports.map(a => a.toJSON());
         // console.log(result);
         // console.log(airports)
-        const city = await City.findOne({
-            where: { id: 5 }
-        });
+        // const city = await City.findOne({
+        //     where: { id: 5 }
+        // });
 
-        const airports = await city.getAirports();
+        // const airports = await city.getAirports();
 
-        console.log(city, airports);
+        // console.log(city, airports);
     });
 }
 

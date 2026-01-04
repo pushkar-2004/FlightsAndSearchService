@@ -1,6 +1,6 @@
-const {CityRepository} = require('../services/index');
+const {CityService} = require('../services/index');
 
-const cityService = new CityRepository();
+const cityService = new CityService();
 
 const create = async (req , res) => {
     try{
