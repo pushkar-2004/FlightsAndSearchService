@@ -14,7 +14,9 @@ class FlightService{
                 throw {error: "Arival time cannot be less then departure time"}
             }
             const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
-            const flight = await this.flightRepository.createFlight({...data,capacity:airplane.capacity});
+            console.log(airplane.dataValues.capacity);
+            const flight = await this.flightRepository.createFlight({...data, totalSeats :airplane.dataValues.capacity});
+            // console.log(flight);
             return flight;
         } catch (error) {
             console.log("Something went wrong inside the flight serivce create flight");
@@ -22,8 +24,14 @@ class FlightService{
         }
     }
 
-    async getFlightData(){
-
+    async getFlightData(data){
+        try {
+            const flight = await this.flightRepository.getAllFlights(data);
+            return flight;
+        } catch (error) {
+            console.log("Something went wromg inside the flight-service layer");
+            throw {error}
+        }
     }
 
 }
