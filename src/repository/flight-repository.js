@@ -18,18 +18,18 @@ class FlightRepository {
     //     ],
     //   });
     // }
-    let priceFilter=[];
-    if(data.minPrice){
-        // Object.assign(filter,{price:{[Op.gte]:data.minPrice}});
-        // filter.price = { [Op.gte]: data.minPrice };
-        priceFilter.push({price:{[Op.gte]:data.minPrice}});
+    let priceFilter = [];
+    if (data.minPrice) {
+      // Object.assign(filter,{price:{[Op.gte]:data.minPrice}});
+      // filter.price = { [Op.gte]: data.minPrice };
+      priceFilter.push({ price: { [Op.gte]: data.minPrice } });
     }
-    if(data.maxPrice){
-        // Object.assign(filter,{price:{[Op.gte]:data.minPrice}});
-        // filter.price = { [Op.lte]: data.maxPrice };
-        priceFilter.push({price:{[Op.lte]:data.maxPrice}});
+    if (data.maxPrice) {
+      // Object.assign(filter,{price:{[Op.gte]:data.minPrice}});
+      // filter.price = { [Op.lte]: data.maxPrice };
+      priceFilter.push({ price: { [Op.lte]: data.maxPrice } });
     }
-    Object.assign(filter,{[Op.and]:priceFilter});
+    Object.assign(filter, { [Op.and]: priceFilter });
     return filter;
   }
 
@@ -64,6 +64,20 @@ class FlightRepository {
         where: filterObject,
       });
       return flight;
+    } catch (error) {
+      console.log("Something went wrong in the getAllFlights");
+      throw { error };
+    }
+  }
+
+  async updateFlight(flightId, data) {
+    try {
+      await Flights.update(data, {
+        where: {
+          id: flightId,
+        },
+      });
+      return true;
     } catch (error) {
       console.log("Something went wrong in the getAllFlights");
       throw { error };
